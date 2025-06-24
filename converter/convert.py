@@ -2,7 +2,10 @@
 
 import os, sys, glob, logging, subprocess, ROOT
 
-ws = os.environ['WS']
+if "WS" in os.environ:
+    ws = os.environ['WS']
+else:
+    ws = f"{os.environ['HOME']}/git/combine2pyhf/"
 wd = ws+'/validation'
 
 sys.path.append(wd)
@@ -10,6 +13,9 @@ import utils
 
 os.system('mkdir -p '+wd+'/cards/combine')
 os.system('mkdir -p '+wd+'/cards/pyhf')
+
+if not os.path.exists ( f"{ws}/logs" ):
+    os.mkdir ( f"{ws}/logs" )
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
