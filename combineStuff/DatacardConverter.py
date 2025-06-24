@@ -1,5 +1,7 @@
 import ROOT as r
 import json, math
+import sys, os
+sys.path.insert(0,f"{os.environ['HOME']}/git/combine2pyhf/" )
 from HiggsAnalysis.CombinedLimit.DatacardParser import *
 
 def checkBin(v, neg):

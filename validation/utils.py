@@ -10,6 +10,6 @@ def setprec(d, prec=2):
 def execute(logger, c):
     try:
         r = subprocess.check_output(c, stderr=subprocess.STDOUT)
-        logger.debug(r)
+        logger.debug(str(r))
     except subprocess.CalledProcessError as e:
-        logger.error(e.output)
+        logger.error(e.output.decode("utf-8"))

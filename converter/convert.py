@@ -66,7 +66,7 @@ for d in dc:
         bbl = '--bbl ' if 'bbl' in fname or 'atlas-' not in fname else ''
         execshapeloc(comblog, dname, f, tool = 'combine', combine2pyhf = True)
         comblog.info('combine -> pyhf: '+fname)
-        utils.execute(comblog, ('python3 /HiggsAnalysis/CombinedLimit/test/datacardConvert.py '+bbl+f+' --normshape --prune --out '+wd+'/cards/combine/combine2pyhf/'+dname+'/'+os.path.splitext(fname)[0]).split())
+        utils.execute(comblog, ('python3 ./HiggsAnalysis-CombinedLimit/test/datacardConvert.py '+bbl+f+' --normshape --prune --out '+wd+'/cards/combine/combine2pyhf/'+dname+'/'+os.path.splitext(fname)[0]).split())
         comblog.info('combine -> pyhf: plot distributions')
         utils.execute(comblog, ('python3 '+ws+'/converter/hist.py --input '+wd+'/cards/combine/combine2pyhf/'+dname+'/'+fname.replace('.txt', '.json')+' --output '+ws+'/results/combine/'+os.path.splitext(fname)[0]+'/hist').split())
         comblog.info('pyhf -> combine: '+fname)
@@ -112,4 +112,4 @@ for d in dc:
 #            lines = ff.readlines()
 #            for l in lines:
 #                print(l)
-        utils.execute(pyhflog, ('python3 /HiggsAnalysis/CombinedLimit/test/datacardConvert.py '+bbl+wd+'/cards/pyhf/pyhf2combine/'+dname+'/'+os.path.splitext(fname)[0]+'.txt --out '+wd+'/cards/pyhf/combine2pyhf/'+dname+'/'+os.path.splitext(fname)[0]+(' --prune' if 'multi-bin-sys-histosys-' in fname else '')).split())
+        utils.execute(pyhflog, ('python3 ./HiggsAnalysis/CombinedLimit/test/datacardConvert.py '+bbl+wd+'/cards/pyhf/pyhf2combine/'+dname+'/'+os.path.splitext(fname)[0]+'.txt --out '+wd+'/cards/pyhf/combine2pyhf/'+dname+'/'+os.path.splitext(fname)[0]+(' --prune' if 'multi-bin-sys-histosys-' in fname else '')).split())
